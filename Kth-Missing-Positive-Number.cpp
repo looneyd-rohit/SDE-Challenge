@@ -50,3 +50,27 @@ public:
         return low;
     }
 };
+
+
+// Optimized: O(Log(N))
+class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        int n = arr.size();
+        if(k <= arr[0]-1) return k;
+        if(k > arr.back()-n) return (arr.back()+k-(arr.back()-n));
+        int low = 0, high = n-1;
+        while(low <= high){
+            int mid = low + ((high-low) >> 1);
+            int missingTillNow = arr[mid] - (mid+1);
+            if(missingTillNow >= k){
+                high = mid - 1;
+            }else{
+                low = mid + 1;
+            }
+        }
+        int missingTillNow = arr[high]-(high+1);
+        int extra = k - missingTillNow;
+        return arr[high] + extra;
+    }
+};
