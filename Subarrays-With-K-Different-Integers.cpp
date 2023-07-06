@@ -1,4 +1,4 @@
-// Leetcode 992 (IMP --> Subarrays with COUNT Pattern)
+// Leetcode 992 (IMP --> Subarrays with COUNT Pattern with given K)
 class Solution
 {
 public:
