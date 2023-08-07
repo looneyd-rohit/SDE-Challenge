@@ -5,7 +5,7 @@
 class Solution {
 public:
     int solve(vector<int>& nums, int target, int ans){
-        unordered_set<int> hash;
+        unordered_set<int> hash;;
         for(auto& num: nums){
             int setBits = num & target;
             int remainingRequired = setBits ^ target;
