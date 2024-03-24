@@ -1,3 +1,5 @@
+// Leetcode 206
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -10,14 +12,14 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        ListNode* prev = NULL;
-        while(head){
-            ListNode* temp = head->next;
-            head->next = prev;
-            prev = head;
-            head = temp;
-        }
-        return prev;
+  ListNode *reverseList(ListNode *head) {
+    ListNode *temp = NULL;
+    while (head) {
+      ListNode *prev = head;
+      head = head->next;
+      prev->next = temp;
+      temp = prev;
     }
+    return temp;
+  }
 };

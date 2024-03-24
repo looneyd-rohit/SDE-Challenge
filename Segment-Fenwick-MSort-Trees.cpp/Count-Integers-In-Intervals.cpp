@@ -49,3 +49,56 @@ public:
  * obj->add(left,right);
  * int param_2 = obj->count();
  */
+
+// [IMP] Approach 2: using dynamic (sparse) segment trees
+struct DynamicSGTree {
+public:
+  int val;
+  DynamicSGTree *left, *right;
+  DynamicSGTree(int val = 0) : val(val), left(NULL), right(NULL) {}
+};
+class CountIntervals {
+public:
+  DynamicSGTree *sgtree;
+  void helper(DynamicSGTree *root, int low, int high, int l, int r, int v) {
+    // if current range has all marked then skip further markings
+    if (root->val == (high - low + 1) * v)
+      return;
+
+    // no overlap
+    if (r < low || high < l)
+      return;
+
+    // full overlap
+    if (l <= low && high <= r) {
+      root->val = (high - low + 1) * v;
+      return;
+    }
+
+    // partial overlap
+    int mid = low + ((high - low) >> 1);
+    if (!root->left)
+      root->left = new DynamicSGTree();
+    helper(root->left, low, mid, l, r, v);
+    if (!root->right)
+      root->right = new DynamicSGTree();
+    helper(root->right, mid + 1, high, l, r, v);
+
+    // update
+    root->val = root->left->val + root->right->val;
+  }
+  CountIntervals() { this->sgtree = new DynamicSGTree(); }
+
+  void add(int left, int right) {
+    helper(this->sgtree, 0, 1e9, left, right, 1);
+  }
+
+  int count() { return this->sgtree->val; }
+};
+
+/**
+ * Your CountIntervals object will be instantiated and called as such:
+ * CountIntervals* obj = new CountIntervals();
+ * obj->add(left,right);
+ * int param_2 = obj->count();
+ */
