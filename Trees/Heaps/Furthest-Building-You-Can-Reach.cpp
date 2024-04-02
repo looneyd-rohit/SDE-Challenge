@@ -1,5 +1,6 @@
 // Leetcode 1642
 
+// Approach: using heaps + lazy greedy approach
 class Solution {
 public:
   int furthestBuilding(vector<int> &heights, int bricks, int ladders) {
@@ -67,4 +68,35 @@ public:
     }
     return ans;
   }
+};
+
+// Approach: (same as above but shorter code)
+class Solution {
+public:
+    int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
+        int n = heights.size();
+        priority_queue<int> pq;    // to store the bricks, replace max bricks with one ladder
+        for(int i=0; i<n-1; i++){
+            int left = heights[i], right = heights[i+1];
+            if(left >= right){
+                continue;
+            }else{
+                // use bricks pre-dominantly
+                bricks -= (right - left);
+                pq.push(right-left);
+                if(bricks < 0){
+                    // bricks can't go negative, so replace with ladders if available
+                    if(ladders > 0){
+                        int t = pq.top(); pq.pop();
+                        bricks += t;
+                        ladders--;
+                    }else{
+                        // cannot reach i+1 building
+                        return i;
+                    }
+                }
+            }
+        }
+        return n-1;
+    }
 };

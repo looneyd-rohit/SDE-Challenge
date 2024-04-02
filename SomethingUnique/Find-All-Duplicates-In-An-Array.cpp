@@ -1,3 +1,5 @@
+// Leetcode 442
+
 // Approach 1: using visited approach
 class Solution {
 public:
@@ -26,15 +28,17 @@ public:
         // this method works since any duplicate element is present twice, which means after
         // swap sort process one will be at correct index and one will be at incorrect index.
         int n = nums.size();
-        vector<int> ans;
+        // first put elements in their correct positions
         for(int i=0; i<n; i++){
-            if(nums[i] != nums[nums[i]-1]){
+            if(nums[i]!=nums[nums[i]-1]){
                 swap(nums[i], nums[nums[i]-1]);
                 i--;
             }
         }
+        // now check which is the duplicate guy
+        vector<int> ans;
         for(int i=0; i<n; i++){
-            if(nums[i]!=i+1){
+            if(i!=nums[i]-1){
                 ans.push_back(nums[i]);
             }
         }
