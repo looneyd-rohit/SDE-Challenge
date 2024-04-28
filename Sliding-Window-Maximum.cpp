@@ -1,4 +1,6 @@
 // Leetcode 239
+
+// Approach: monotonic deque
 class Solution
 {
 public:
@@ -37,6 +39,27 @@ public:
                 i++;
                 j++;
             }
+        }
+        return ans;
+    }
+};
+
+
+// Approach: new and revamped
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        int n = nums.size();
+        deque<pair<int, int>> dq;
+        vector<int> ans;
+        for(int i=0; i<n; i++){
+            while(!dq.empty() && dq.back().first < nums[i]) dq.pop_back();
+
+            while(!dq.empty() && dq.front().second < (i-k+1)) dq.pop_front();
+
+            dq.push_back({nums[i], i});
+
+            if((i+1) >= k) ans.push_back(dq.front().first);
         }
         return ans;
     }
