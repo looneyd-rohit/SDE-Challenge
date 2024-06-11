@@ -1,5 +1,6 @@
 // Leetcode 523
 
+// Approach: hashmap subarray sum approach
 class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
