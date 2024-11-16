@@ -1,6 +1,6 @@
 // Leetcode 3076
 
-// [IMP] Approach: brute force but well thought
+// Approach [IMP]: brute force but well thought
 class Solution {
 public:
   vector<string> shortestSubstrings(vector<string> &arr) {

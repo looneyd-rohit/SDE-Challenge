@@ -11,7 +11,7 @@ public:
     for (int i = 0; i < n; i++) {
       if (i + arr[i] < n)
         adj[i].push_back(i + arr[i]);
-      if (i - arr[i] >= 0)
+      if (i - arr[i] >= 0a)
         adj[i].push_back(i - arr[i]);
     }
     queue<int> q;

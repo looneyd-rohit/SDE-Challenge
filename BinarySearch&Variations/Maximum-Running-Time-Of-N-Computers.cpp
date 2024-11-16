@@ -1,5 +1,6 @@
 // Leetcode 2141
-// [IMP]: Binary Search on Answer Space (Two variations of possible() function)
+
+// Approach [IMP]: Binary Search on Answer Space (Two variations of possible() function)
 class Solution {
 public:
     // bool isPossible(int n, vector<int>& batteries, long long time){

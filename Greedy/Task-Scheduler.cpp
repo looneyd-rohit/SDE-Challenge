@@ -1,5 +1,6 @@
 // Leetcode 621
-// [IMP]: Greedy type approach, form schedules
+
+// Approach [IMP]: Greedy type approach, form schedules
 class Solution {
 public:
   int leastInterval(vector<char> &tasks, int n) {

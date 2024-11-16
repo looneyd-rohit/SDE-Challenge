@@ -1,5 +1,6 @@
 // Leetcode 2642
-// [IMP]: Floyd Warshall
+
+// Approach [IMP]: Floyd Warshall
 class Graph {
 public:
     int n;

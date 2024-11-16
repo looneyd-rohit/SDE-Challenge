@@ -1,46 +1,34 @@
 // Leetcode 3081
 
-// Approach: greedy
 class Solution {
 public:
-    const int  M = 1e9+7;
-    int binExp(long long a, int b){
-        long long res = 1;
-        while(b){
-            if(b&1){
-                res = (res * a) % M;
+    string minimizeStringValue(string s) {
+        int n = s.length();
+        vector<int> freq(26, 0);
+        for(int i=0; i<n; i++){
+            if(s[i]=='?') continue;
+            freq[s[i]-'a']++;
+        }
+        string missing = "";
+        for(int i=0; i<n; i++){
+            if(s[i]!='?') continue;
+            // find the minimum character that can be placed at the '?'
+            int ind=0, min_freq=1e9;
+            for(int j=0; j<26; j++){
+                if(min_freq > freq[j]){
+                    min_freq = freq[j];
+                    ind = j;
+                }
             }
-            a = (a*a) % M;
-            b >>= 1;
+            // now we have the most appropriate character to be placed at '?'
+            missing.push_back((char)(ind + 'a'));
+            freq[ind]++;
         }
-        return res % M;
-    }
-    int dp[101][101][101];
-    long long solve(int index, int k, int len, int n, vector<int>& nums){
-        // cout<<index<<", "<<k<<", "<<len<<endl;
-        if(index >= n){
-            if(k == 0){
-                return binExp(2, n-len) % M;
-            }
-            return 0;
+        sort(begin(missing), end(missing));
+        for(int i=0, k=0; i<n; i++){
+            if(s[i]!='?') continue;
+            s[i] = missing[k++];
         }
-        
-        if(dp[index][k][len]!=-1) return dp[index][k][len];
-        
-        // take
-        long long take = 0;
-        if(k-nums[index]>=0){
-            take = solve(index+1, k-nums[index], len+1, n, nums) % M;
-        }
-        
-        // not take
-        long long not_take = solve(index+1, k, len, n, nums) % M;
-        
-        return dp[index][k][len] = (take + not_take) % M;
-    }
-    int sumOfPower(vector<int>& nums, int k) {
-        int n = nums.size();
-        memset(dp, -1, sizeof(dp));
-        return solve(0, k, 0, n, nums);
+        return s;
     }
 };

@@ -1,5 +1,6 @@
 // Leetcode 1879
-// [IMP]: DP + Bitmask
+
+// Approach [IMP]: DP + Bitmask
 class Solution {
 public:
     int dp[14][1<<14+1];

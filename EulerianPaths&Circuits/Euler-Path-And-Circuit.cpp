@@ -49,3 +49,85 @@ public:
 	    return 0;
 	}
 };
+
+// Approach: updated solution
+class Solution {
+public:
+    bool checkEulerCircuit(int V, vector<int>adj[]){
+        vector<int> indegree(V, 0);
+        for(int i=0; i<V; i++){
+            for(auto& node: adj[i]){
+                indegree[node]++;
+            }
+        }
+        for(int i=0; i<V; i++){
+            if(indegree[i] & 1){
+                return false;
+            }
+        }
+        vector<bool> visited(V, false);
+        function<void(int)> dfs = [&](int node){
+            visited[node] = true;
+            for(auto& next: adj[node]){
+                if(!visited[next]){
+                    dfs(next);
+                }
+            }
+        };
+        dfs(0);
+        for(int i=0; i<V; i++){
+            if(indegree[i] > 0){
+                if(!visited[i]){
+                    // separate components
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    bool checkEulerPath(int V, vector<int>adj[]){
+        vector<int> indegree(V, 0);
+        for(int i=0; i<V; i++){
+            for(auto& node: adj[i]){
+                indegree[node]++;
+            }
+        }
+        int count = 0;
+        for(int i=0; i<V; i++){
+            if(indegree[i] & 1){
+                count++;
+            }
+        }
+        // only 0 or only 2 odd vertex allowed in euler path
+        if(count != 0 && count != 2) return false;
+        
+        vector<bool> visited(V, false);
+        function<void(int)> dfs = [&](int node){
+            visited[node] = true;
+            for(auto& next: adj[node]){
+                if(!visited[next]){
+                    dfs(next);
+                }
+            }
+        };
+        dfs(0);
+        for(int i=0; i<V; i++){
+            if(indegree[i] > 0){
+                if(!visited[i]){
+                    // separate components
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+	int isEulerCircuit(int V, vector<int>adj[]){
+	    // check for euler circuit
+	    if(checkEulerCircuit(V, adj)) return 2;
+	    
+	    // check for euler path
+	    if(checkEulerPath(V, adj)) return 1;
+	    
+	    return 0;
+	}
+};

@@ -1,6 +1,6 @@
 // Leetcode 3145
 
-// [IMP] Approach: cyclic property of bits + counting logic + observation
+// Approach [IMP] Approach: cyclic property of bits + counting logic + observation
 class Solution {
 public:
     long long bin_exp(long long a, long long b, long long mod){

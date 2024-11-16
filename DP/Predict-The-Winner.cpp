@@ -20,7 +20,7 @@ public:
         }
         return dp[i][j][isFirst] = ans;
     }
-    bool PredictTheWinner(vector<int>& nums) {
+    bool predictTheWinner(vector<int>& nums) {
         int n = nums.size();
         // write a function solve() which will return the score of the player 1
         int total = 0;

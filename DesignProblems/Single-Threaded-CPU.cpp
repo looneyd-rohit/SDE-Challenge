@@ -1,5 +1,6 @@
 // Leetcode 1834
-// [IMP]: Shortest Job First Scheduling Alogrithm (No Preemption)
+
+// Approach [IMP]: Shortest Job First Scheduling Alogrithm (No Preemption)
 class Solution {
 public:
     vector<int> getOrder(vector<vector<int>>& tasks) {

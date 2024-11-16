@@ -1,5 +1,6 @@
 // Leetcode 1478
-// [IMP]: Very nice DP problem + Front partition + Median Based (maths)
+
+// Approach [IMP]: Very nice DP problem + Front partition + Median Based (maths)
 class Solution {
 public:
     int dp[(int)1e4+1][101];

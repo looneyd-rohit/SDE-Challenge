@@ -1,5 +1,6 @@
 // Leetcode 2572
-// [IMP]: Hard DP + Bitmask Problem (don't know why marked medium)
+
+// Approach [IMP]: Hard DP + Bitmask Problem (don't know why marked medium)
 const vector<int> PRIMES = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 const int MOD = 1e9+7;
 

@@ -1,5 +1,6 @@
 // Leetcode 218
-// [IMP]: Very nice set/multiset based observation based question
+
+// Approach [IMP]: Very nice set/multiset based observation based question
 
 class Solution {
 public:

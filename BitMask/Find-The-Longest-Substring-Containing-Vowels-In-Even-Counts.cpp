@@ -1,6 +1,6 @@
 // Leetcode 1371
-// [IMP]: BitMask String Pattern
 
+// Approach [IMP]: BitMask String Pattern
 class Solution {
 public:
     int findTheLongestSubstring(string s) {

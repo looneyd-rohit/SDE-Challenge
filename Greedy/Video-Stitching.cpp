@@ -1,5 +1,6 @@
 // Leetcode 1024
-// [IMP]: Nice Greedy Pattern, similar to jump game ii, min taps to water garden etc.
+
+// Approach [IMP]: Nice Greedy Pattern, similar to jump game ii, min taps to water garden etc.
 class Solution {
 public:
     int videoStitching(vector<vector<int>>& clips, int time) {

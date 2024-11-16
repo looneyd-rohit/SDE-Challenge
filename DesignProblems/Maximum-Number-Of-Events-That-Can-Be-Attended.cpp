@@ -1,5 +1,6 @@
 // Leetcode 1353
-// [IMP]: SJF Pattern Question, very nice question
+
+// Approach [IMP]: SJF Pattern Question, very nice question
 class Solution {
 public:
   int maxEvents(vector<vector<int>> &events) {
